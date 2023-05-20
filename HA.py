@@ -18,7 +18,7 @@ def checkMainLight():
     )
     print(response.text)
 
-def tutnOnMainLivingRoomLight():
+def turnOnMainLivingRoomLight():
     # Turn on a light
     entity_id = 'light.living_room_pendants'
     data = {"entity_id": entity_id}
@@ -30,7 +30,7 @@ def tutnOnMainLivingRoomLight():
     )
     print(response.text)
 
-def tutnOfMainLivingRoomLight():
+def turnOfMainLivingRoomLight():
     # Turn on a light
     entity_id = 'light.living_room_pendants'
     data = {"entity_id": entity_id}

@@ -26,11 +26,11 @@ class CommandProcessor:
         if 'turn on dinner light' in command:
             self.text_to_speech.speak('turning on dinner light')
             print('turning on dinner light')
-            HA.tutnOnMainLivingRoomLight()
+            HA.turnOnMainLivingRoomLight()
 
         if 'turn off dinner light' in command:
             self.text_to_speech.speak('turning of dinner light')
             print('turning of dinner light')
-            HA.tutnOfMainLivingRoomLight()
+            HA.turnOfMainLivingRoomLight()
 
 
