@@ -1,12 +1,15 @@
 from CommandProcessor import CommandProcessor
+from CommandProcessorRU import CommandProcessorRU
 from SpeechToText import SpeechToText
 from TextToSpeech import TextToSpeech
+
 
 
 def main():
     speech_to_text = SpeechToText()
     text_to_speech = TextToSpeech()
-    command_processor = CommandProcessor(text_to_speech)
+    #command_processor = CommandProcessor(text_to_speech)
+    command_processor = CommandProcessorRU(text_to_speech)
 
     while True:
         command = speech_to_text.listen()

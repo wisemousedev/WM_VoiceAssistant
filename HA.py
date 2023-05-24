@@ -31,7 +31,7 @@ def turnOnMainLivingRoomLight():
     print(response.text)
 
 def turnOfMainLivingRoomLight():
-    # Turn on a light
+    # Turn off a light
     entity_id = 'light.living_room_pendants'
     data = {"entity_id": entity_id}
     response = requests.post(
@@ -42,3 +42,14 @@ def turnOfMainLivingRoomLight():
     )
     print(response.text)
 
+def turnTVLight():
+    # Turn on a light
+    entity_id = 'light.main_lvl_living_tv'
+    data = {"entity_id": entity_id}
+    response = requests.post(
+        f'{base_url}services/light/turn_on',
+        headers=headers,
+        data=json.dumps(data),
+        verify=False
+    )
+    print(response.text)
