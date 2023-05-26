@@ -6,7 +6,7 @@ from TextToSpeech import TextToSpeech
 
 
 def main():
-    speech_to_text = SpeechToText()
+    speech_to_text = SpeechToText('ru')
     text_to_speech = TextToSpeech()
     #command_processor = CommandProcessor(text_to_speech)
     command_processor = CommandProcessorRU(text_to_speech)
