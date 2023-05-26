@@ -15,9 +15,9 @@ class SpeechToText:
             self.recognizer.energy_threshold = 400
             audio = self.recognizer.listen(source, phrase_time_limit=10)
             try:
-                text = wp.whisper(audio)
+                #text = wp.whisper(audio)
                 #text = self.recognizer.recognize_google(audio)
-                #text = self.recognizer.recognize_google(audio, language='ru-RU')
+                text = self.recognizer.recognize_google(audio, language='ru-RU')
                 print(text)
                 return text.lower()
             except:

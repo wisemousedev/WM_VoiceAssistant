@@ -1,7 +1,6 @@
 import os
 import ConsoleDraw
 import HA
-import tempfile
 
 
 class CommandProcessorRU:
@@ -17,7 +16,7 @@ class CommandProcessorRU:
             print('Привет! Как Я могу помочь?')
 
         if 'открой мой компьютер' in command:
-            self.text_to_speech.speak('Opening My Computer folder')
+            self.text_to_speech.speak('Открываю ваш компьютер')
             print('Opening My Computer folder')
             os.system(r'start ::{20D04FE0-3AEA-1069-A2D8-08002B30309D}')
         #TALK
@@ -28,7 +27,7 @@ class CommandProcessorRU:
         #HA
         if 'включи люстру' in command:
             self.text_to_speech.speak('включаю люстру')
-            print('turning on dinner light')
+            print('включаю люстру')
             HA.turnOnMainLivingRoomLight()
 
         if 'выключи люстру' in command:
