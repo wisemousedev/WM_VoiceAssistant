@@ -11,6 +11,7 @@ def main():
     #command_processor = CommandProcessor(text_to_speech)
     command_processor = CommandProcessorRU(text_to_speech)
 
+
     while True:
         command = speech_to_text.listen()
         command_processor.process(command)

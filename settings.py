@@ -8,3 +8,5 @@ OpenAI_API_KEY = os.environ['OpenAI_API_KEY']
 
 RU_MODEL = os.environ['RU_MODEL']
 UA_MODEL = os.environ['UA_MODEL']
+
+

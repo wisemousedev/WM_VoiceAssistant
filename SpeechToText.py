@@ -26,8 +26,8 @@ class SpeechToText:
         stream.start_stream()
         print('Listening...')
 
-        while True:
 
+        while True:
             data = stream.read(4000, exception_on_overflow=False)
             if len(data) == 0:
                 break
