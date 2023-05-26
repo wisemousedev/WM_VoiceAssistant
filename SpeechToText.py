@@ -2,13 +2,14 @@ import os
 import pyaudio
 from vosk import Model, KaldiRecognizer
 from settings import RU_MODEL
+from settings import RU_MODEL_SMALL
 from settings import UA_MODEL
 
 
 class SpeechToText:
     def __init__(self, language):
         if language == 'ru':
-            model_path = RU_MODEL
+            model_path = RU_MODEL_SMALL
         elif language == 'ua':
             model_path = UA_MODEL
         else:
@@ -35,5 +36,9 @@ class SpeechToText:
                 result = self.rec.Result()
                 print(result)
                 return result.lower()
+            else:
+                result = self.rec.PartialResult()
+                print(self.rec.PartialResult())
+                #return result.lower()
         print("Sorry, I didn't understand that.")
         return ""

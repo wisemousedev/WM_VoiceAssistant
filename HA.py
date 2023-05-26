@@ -53,3 +53,15 @@ def turnTVLight():
         verify=False
     )
     print(response.text)
+
+def turnTVLightOff():
+    # Turn on a light
+    entity_id = 'light.main_lvl_living_tv'
+    data = {"entity_id": entity_id}
+    response = requests.post(
+        f'{base_url}services/light/turn_off',
+        headers=headers,
+        data=json.dumps(data),
+        verify=False
+    )
+    print(response.text)

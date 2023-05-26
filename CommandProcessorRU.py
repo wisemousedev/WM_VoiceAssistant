@@ -1,6 +1,8 @@
 import os
 import ConsoleDraw
 import HA
+import ChatGPT
+import Сommands
 
 
 class CommandProcessorRU:
@@ -11,10 +13,6 @@ class CommandProcessorRU:
     def process(self, command):
 
         #LOCAL
-        if 'привет' in command:
-            self.text_to_speech.speak('Привет! Как Я могу помочь??')
-            print('Привет! Как Я могу помочь?')
-
         if 'открой мой компьютер' in command:
             self.text_to_speech.speak('Открываю ваш компьютер')
             print('Opening My Computer folder')
@@ -39,6 +37,17 @@ class CommandProcessorRU:
             self.text_to_speech.speak('включаю подсветку телевизора')
             print('включаю подсветку телевизора')
             HA.turnTVLight()
+
+        if 'выключи подсветку телевизора' in command:
+            self.text_to_speech.speak('выключаю подсветку телевизора')
+            print('выключаю подсветку телевизора')
+            HA.turnTVLightOff()
+        #if 'скажи' in command or 'подскажи' in command or 'найди' in command or 'поищи' in command or 'найти' in command or 'подсказать' in command:
+        if any(code in command for code in Сommands.ChatGPT_CODES):
+            self.text_to_speech.speak('Ищу инфу. Минутку...')
+            result = ChatGPT.runCompletion(command)
+            self.text_to_speech.speak(result)
+            print(result)
 
 
 
