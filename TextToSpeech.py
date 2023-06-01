@@ -5,7 +5,7 @@ class TextToSpeech:
     def __init__(self):
         self.engine = pyttsx3.init()
         self.engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\TokenEnums\RHVoice\Irina')
-        self.engine.setProperty('rate', 130)
+        self.engine.setProperty('rate', 150)
         # from https://rhvoice.org/download/RHVoice-voice-Russian-Irina-v4.1.2012.18-setup.exe
 
 

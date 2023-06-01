@@ -65,3 +65,39 @@ def turnTVLightOff():
         verify=False
     )
     print(response.text)
+
+def turnFloodLightOn():
+    # Turn on a light
+    entity_id = 'light.smart_flood_lights'
+    data = {"entity_id": entity_id}
+    response = requests.post(
+        f'{base_url}services/light/turn_on',
+        headers=headers,
+        data=json.dumps(data),
+        verify=False
+    )
+    print(response.text)
+
+def turnFloodLightOff():
+    # Turn on a light
+    entity_id = 'light.smart_flood_lights'
+    data = {"entity_id": entity_id}
+    response = requests.post(
+        f'{base_url}services/light/turn_off',
+        headers=headers,
+        data=json.dumps(data),
+        verify=False
+    )
+    print(response.text)
+
+def setTemperature(temperature):
+    # Turn on a light
+    entity_id = 'climate.my_ecobee'
+    data = {"entity_id": entity_id}
+    response = requests.post(
+        f'{base_url}climate/set_temperature/{temperature}',
+        headers=headers,
+        data=json.dumps(data),
+        verify=False
+    )
+    print(response.text)

@@ -2,6 +2,7 @@ import os
 import ConsoleDraw
 import HA
 import ChatGPT
+import HelperService
 import Сommands
 
 
@@ -42,7 +43,24 @@ class CommandProcessorRU:
             self.text_to_speech.speak('выключаю подсветку телевизора')
             print('выключаю подсветку телевизора')
             HA.turnTVLightOff()
-        #if 'скажи' in command or 'подскажи' in command or 'найди' in command or 'поищи' in command or 'найти' in command or 'подсказать' in command:
+
+        if 'включи мой свет' in command:
+            self.text_to_speech.speak('прам пам пам...')
+            print('включаю свет')
+            HA.turnFloodLightOn()
+
+        if 'выключи мой свет' in command:
+            self.text_to_speech.speak('прам пам пам...')
+            print('выключаю свет')
+            HA.turnFloodLightOff()
+
+        # if 'температура' in command:
+        #     temperature = HelperService.stringToNumber(command)
+        #     self.text_to_speech.speak(f'устанавливаю температуру в дома на {temperature} градуса')
+        #     print(f'устанавливаю температуру в дома на {temperature} градусов')
+        #     HA.turnFloodLightOff()
+
+        #ChatGPT
         if any(code in command for code in Сommands.ChatGPT_CODES):
             self.text_to_speech.speak('Ищу инфу. Минутку...')
             result = ChatGPT.runCompletion(command)

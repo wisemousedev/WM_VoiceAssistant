@@ -27,6 +27,13 @@ class SpeechToText:
         stream.start_stream()
         print('Listening...')
 
+        # # List all audio input devices
+        # for i in range(p.get_device_count()):
+        #     device_info = p.get_device_info_by_index(i)
+        #     if device_info['maxInputChannels'] > 0:
+        #         print(f"Device id {i} - {device_info['name']}")
+
+
 
         while True:
             data = stream.read(4000, exception_on_overflow=False)
@@ -38,7 +45,7 @@ class SpeechToText:
                 return result.lower()
             else:
                 result = self.rec.PartialResult()
-                print(self.rec.PartialResult())
+                #print(self.rec.PartialResult())
                 #return result.lower()
         print("Sorry, I didn't understand that.")
         return ""
