@@ -3,7 +3,9 @@ import ConsoleDraw
 import HA
 import ChatGPT
 import HelperService
+import LangChain
 import Сommands
+import re
 
 
 class CommandProcessorRU:
@@ -13,17 +15,7 @@ class CommandProcessorRU:
 
     def process(self, command):
 
-        #LOCAL
-        if 'открой мой компьютер' in command:
-            self.text_to_speech.speak('Открываю ваш компьютер')
-            print('Opening My Computer folder')
-            os.system(r'start ::{20D04FE0-3AEA-1069-A2D8-08002B30309D}')
-        #TALK
-        if 'кто ты' in command:
-            self.text_to_speech.speak('Я - голосовой помощник, который в будущем покорит сердца миллионов людей.')
-            print('Я - голосовой помощник, который в будущем покорит сердца миллионов людей.')
-            ConsoleDraw.draw_heart()
-        #HA
+            #HA
         if 'включи люстру' in command:
             self.text_to_speech.speak('включаю люстру')
             print('включаю люстру')
@@ -54,16 +46,14 @@ class CommandProcessorRU:
             print('выключаю свет')
             HA.turnFloodLightOff()
 
-        # if 'температура' in command:
-        #     temperature = HelperService.stringToNumber(command)
-        #     self.text_to_speech.speak(f'устанавливаю температуру в дома на {temperature} градуса')
-        #     print(f'устанавливаю температуру в дома на {temperature} градусов')
-        #     HA.turnFloodLightOff()
-
-        #ChatGPT
-        if any(code in command for code in Сommands.ChatGPT_CODES):
-            self.text_to_speech.speak('Ищу инфу. Минутку...')
-            result = ChatGPT.runCompletion(command)
+        if 'открой мой компьютер' in command:
+            self.text_to_speech.speak('Открываю ваш компьютер')
+            print('Opening My Computer folder')
+            os.system(r'start ::{20D04FE0-3AEA-1069-A2D8-08002B30309D}')
+        if any(code in command for code in Сommands.WakeUP_Codes):
+            # ChatGPT
+            #result = ChatGPT.runCompletion(command)
+            result = LangChain.get_response_from_ai(command)
             self.text_to_speech.speak(result)
             print(result)
 
