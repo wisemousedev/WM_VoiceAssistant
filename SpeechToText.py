@@ -4,6 +4,8 @@ from vosk import Model, KaldiRecognizer
 from settings import RU_MODEL
 from settings import RU_MODEL_SMALL
 from settings import UA_MODEL
+import time
+import json
 
 
 class SpeechToText:
@@ -47,5 +49,26 @@ class SpeechToText:
                 result = self.rec.PartialResult()
                 #print(self.rec.PartialResult())
                 #return result.lower()
+        print("Sorry, I didn't understand that.")
+        return ""
+
+    def listen_for_seconds(self, seconds):
+        p = pyaudio.PyAudio()
+        stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
+        stream.start_stream()
+        print('Listening for', seconds, 'seconds...')
+
+        end_time = time.time() + seconds
+        while time.time() < end_time:
+            data = stream.read(4000, exception_on_overflow=False)
+            if len(data) == 0:
+                break
+            if self.rec.AcceptWaveform(data):
+                result = self.rec.Result()
+                print(result)
+                result_json = json.loads(result)
+                if result_json.get('text'):
+                    return result_json['text'].lower()
+
         print("Sorry, I didn't understand that.")
         return ""
